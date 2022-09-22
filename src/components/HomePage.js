@@ -27,6 +27,7 @@ const HomePage = ()=>{
         let res = window.confirm('Are you sure you want to delete this item?');
         if(res){
             let newData = data.filter((entry)=>entry.id!==id);
+            setData(newData)
             setFilteredData(newData);
             if(newData.slice(currPage*10-10,currPage*10).length === 0 && currPage > 1){
                 setCurrPage(currPage-1)   
@@ -41,6 +42,7 @@ const HomePage = ()=>{
         let res = window.confirm('Are you sure you want to delete all the selected items?');
         if(res){
             let newData = data.filter((entry)=>!idArray.includes(entry.id))
+            setData(newData)
             setFilteredData(newData)
             setSelectedEntryArray(new Array(10).fill(false))
             if(newData.slice(currPage*10-10,currPage*10).length === 0 && currPage > 1){
